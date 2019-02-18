@@ -1,0 +1,65 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %} 
+<style>
+    .grid-container {
+      display: grid;
+      grid-gap: 70px 30px;
+      grid-template-columns: auto auto;
+      padding: 10px;
+    }
+    .grid-item {
+      padding: 10px;
+    }
+</style>
+<div class="container">
+    <br><br>
+    <p style="color: #ffffff; text-align:center; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>RUTINAS PERSONALIZADAS</b></p>
+    <div class="dropdown-divider"></div>
+    <br>
+    <center>
+        {% if 'del' in request.GET %}
+            <div class="alert alert-danger" role="alert" style="width: 10cm">
+                <p>Rutina borrada!</p>
+            </div>
+        {% endif %}
+        {% if 'edit' in request.GET %}
+            <div class="alert alert-warning" role="alert" style="width: 10cm; text-align:center;">
+                <p>Rutina editada!</p>
+            </div>
+        {% endif %}
+    </center>
+    <br>
+    {% if 'rutina' %}
+        <center>
+            <div class="grid-container">
+                    {% for rut in rutina %}
+                    <div class="grid-item">
+                        <div class="card border-danger bg-light" style="width: 350px;">
+                            <h5 class="card-header bg-danger" style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{rut.titulo}}</h5>
+                            <img src="{{rut.imagen.url}}" class="card-img-top" height="250px">
+                            <div class="card-body">
+                            <p class="card-text">{{rut.descripcion}}</p>                      
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'updateRutinaPersonalizada' rut.id %}" >
+                                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-pencil-alt"></i></button>
+                            </a>
+                            <a href="{% url 'deleteRutinaPersonalizada' rut.id %}">
+                                <button type="button" class="btn btn-outline-secondary"><i class="fas fa-times"></i></button>
+                            </a>                      
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </center>  
+        <br><br><br>      
+    {% else %}
+        <center>
+            <div class="alert alert-danger mt-3" role="alert" style="width: 10cm">
+                <p>No tienes ninguna rutina creada.</p>
+            </div>
+        </center>
+    {% endif %}
+</div>
+{% endblock %}

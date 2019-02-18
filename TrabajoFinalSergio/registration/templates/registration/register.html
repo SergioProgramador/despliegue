@@ -1,0 +1,24 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %} 
+<style>.errorList{color: red;} label{display: none}</style>
+<div class="container">
+    <div style="text-align: center">
+        <br><br>
+        <p style="color: #ffffff; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 2cm">REGISTRO</p>
+        <br>
+        <center>
+            <div style="background-color: #d4cfcfb4; width: 18cm">
+                <br>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-clipboard-check"></i> <b>REGISTRARSE</b></button> 
+                    <br><br>                   
+                </form> 
+            </div>                          
+        </center>
+    </div>
+</div>
+<br><br>
+{% endblock %} 

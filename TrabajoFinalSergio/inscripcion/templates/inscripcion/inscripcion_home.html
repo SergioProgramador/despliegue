@@ -1,0 +1,48 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <center>
+        <br><br>
+        <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>INSCRÍBETE</b></p>
+        <div class="dropdown-divider"></div>
+        <br>
+        <div>
+            <p style="color: #ffffff; font-size: 0.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Inscríbete a nuestro gimnasio para poder ponerte en forma gracias a nuestras instalaciones modernas.<br>
+            Para inscribirte dale al botón "Inscribete", tendrás que rellenar un formulario con tus datos. ¡ASÍ DE FÁCIL!<br>
+            Sólo por 30 € al mes y podrás quitarte cuando quieras! SIN COMPROMISO!</p>
+        </div>
+        <br>
+        {% if 'ins' in request.GET %}
+            <div class="alert alert-success" role="alert" style="width: 10cm">
+                Ya está usted inscrito a este gimnasio, podrá disfrutar de nuestros servicios cuando quiera!
+            </div>
+            <br>
+        {% endif %}
+        {% if nop %}
+            <div class="alert alert-danger" role="alert" style="width: 10cm">
+                <p>No estás inscrito en nuestro gimnasio. PULSA INSCRÍBETE AQUÍ ABAJO</p>
+            </div>
+            <br>
+        {% endif %}
+        {% if 'del' in request.GET %}
+        <center>
+            <div class="alert alert-danger" role="alert" style="width: 12cm">
+                Has anulado tu inscripción correctamente!
+            </div>
+        </center>
+        <br>
+        {% endif %}
+        <a href="{% url 'create' %}">
+            <button class="btn btn-primary"><i class="fas fa-clipboard-list"></i> <b>INSCRÍBETE</b></button>
+        </a>
+        <a href="{% url 'inscripcion_detalle' %}">
+            <button class="btn btn-light"><i class="far fa-eye"></i> <b>VER TU INSCRIPCIÓN</b></button>
+        </a>
+        <br><br>
+        <img src="{% static 'inscripcion/img/inscripcion.jpg' %}" style="border-style:double; border-color: white;">
+        <br><br><br><br>
+    </center>
+</div>
+{% endblock %}

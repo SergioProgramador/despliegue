@@ -1,0 +1,47 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div style="text-align:center;">
+    <br><br>
+    <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>TU INSCRIPCIÓN</b></p>
+    <div class="dropdown-divider"></div>
+    <br>
+  </div>
+
+  {% if 'edit' in request.GET %}
+    <center>
+      <div class="alert alert-warning" role="alert" style="width: 12cm">
+          Se ha editado correctamente su inscripción!
+      </div>
+    </center>
+    <br>
+  {% endif %}
+
+  <center>
+    <div class="row mt-3" style="width: 30cm">
+      <div class="col-md-9 mx-auto">
+        <div class="card border-secondary">
+          <div class="card-header" style="background-color:#804c9e">
+            <h5 class="card-title" style="color:#ffffff">Inscripción de {{inscripcion.nombre}} {{inscripcion.apellidos}}</h5>
+          </div>
+          <div class="card-body bg-light">
+            <p class="card-text"><b>DNI:</b> {{inscripcion.dni}}</p>
+            <p class="card-text"><b>EDAD:</b> {{inscripcion.edad}} años</p>
+            <p class="card-text"><b>TELÉFONO:</b> {{inscripcion.telefono}}</p>
+            <p class="card-text"><b>CIUDAD:</b> {{inscripcion.ciudad}}</p>
+            <p class="card-text"><b>CUENTA BANCARIA:</b> {{inscripcion.cuenta_bancaria}}</p>
+            <p class="card-text"><b>CUOTA: </b>{{inscripcion.cuota}} €</p>
+            <p class="card-text"><b>FECHA INSCRIPCIÓN:</b> {{inscripcion.created}}</p>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'update' inscripcion.id %}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i> <b>EDITAR</b></a>
+            <a href="{% url 'delete' inscripcion.id %}" class="btn btn-danger"><i class="fas fa-times"></i> <b>ANULAR</b></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+<br><br>
+</div>
+{% endblock %}

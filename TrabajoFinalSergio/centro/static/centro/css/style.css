@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.piedepagina{
+    background-color: #804c9e;
+    height: 0.63cm;  
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    clear:both;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+.vertical-right-aligned {
+    transform: rotate(-90deg);
+    transform-origin: 100% 100%;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 100;
+}
+

@@ -1,0 +1,47 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %} 
+<div class="container">
+    <div style="text-align: center">
+            <br>
+            <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>CONTACTA CON NOSOTROS</b></p>
+            <br>
+            <p style="color: #ffffff; font-size: 0.8cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>Somos la franquicia más grande del mundo en el sector del Fitness,
+                pero nuestra principal fortaleza es la cercanía hacia nuestras comunidades.</b></p>
+            <p style="color: #ffffff; font-size: 0.4cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+                <b>PONTE EN CONTACTO CON NOSOTROS PARA CUALQUIER TIPO DE PREGUNTA O PARA DARNOS TU OPINIÓN ACERCA DE NUESTRO SERVICIO</b>
+            </p>
+            <br>
+            <div class="dropdown-divider"></div>
+            <br>
+            <center>
+                <form id="formulario" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="nombre" style="color: #ffffff"><b>Nombre:</b></label>
+                        <input type="text" class="form-control" name="nombre" style="width:30%">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido" style="color: #ffffff"><b>Apellido:</b></label>
+                        <input type="text" class="form-control" name="apellido" style="width:30%">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono" style="color: #ffffff"><b>Teléfono:</b></label>
+                        <input type="text" class="form-control" name="telefono" style="width:30%">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" style="color: #ffffff"><b>Email:</b></label>
+                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" style="width:30%">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje" style="color: #ffffff"><b>Mensaje:</b></label>
+                        <textarea type="text" class="form-control" name="mensaje" style="width:30%;" rows="4"></textarea>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LesWpAUAAAAAGZ8GefTpAfN-zU6sxE1wm8elMbE"></div>
+                    <button type="submit" class="btn btn-primary"><b>ENVIAR </b><i class="fas fa-arrow-circle-right"></i></button>
+                </form>
+            </center>
+            <br><br>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %} 
+<br>
+<center>
+    <div class="container">
+        <br>
+        <br>
+        <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>NUESTROS CENTROS</b></p>
+        <div class="dropdown-divider"></div>
+        <br>        
+        {% if 'add' in request.GET %}
+            <div class="alert alert-success" role="alert" style="width: 10cm">
+                Centro añadido correctamente!
+            </div>
+            <br>
+        {% endif %}
+        {% if 'edit' in request.GET %}
+            <div class="alert alert-warning" role="alert" style="width: 10cm">
+                Centro editado correctamente!
+            </div>
+            <br>
+        {% endif %}
+        {% if 'del' in request.GET %}
+            <div class="alert alert-danger" role="alert" style="width: 10cm">
+                Centro eliminado correctamente!
+            </div>
+            <br>
+        {% endif %}
+        {% if request.user.is_staff %}
+        <a href="{% url 'createCentro' %}">
+            <button class="btn btn-primary btn-lg btn-block" style="width: 800px;"><i class="fas fa-plus"></i> <b>CREAR CENTRO</b></button>
+        </a>
+        {% endif %}
+        <br>
+        {% for centro in centros %}
+        <div style="background-color: #c5c0c0; width: 800px;">
+            <div class="media">
+                <img src="{{centro.imagen.url}}" class="align-self-start" height="250px" width="300px">
+                <div class="media-body">
+                    <br>
+                    <h5 class="card-title"><b>{{centro.nombre}}</b></h5>
+                    <div class="dropdown-divider"></div><br>
+                    <p class="card-text"><b>DIRECCIÓN: </b> {{centro.direccion}}</p>
+                    <p class="card-text"><b>EMAIL: </b> {{centro.email}}</p>
+                    <p class="card-text"><b>HORARIO: </b> {{centro.horario}}</p>
+                    <p class="card-text"><b>CIUDAD: </b> {{centro.ciudad}}</p>
+                </div>
+            </div>
+        </div>
+        {% if request.user.is_staff %}
+        <div>
+            <a href="{% url 'updateCentro' centro.id %}"><button class="btn btn-secondary mt-1" style="width: 400px;"><i class="fas fa-pencil-alt"></i> <b>EDITAR</b></button></a>
+            <a href="{% url 'deleteCentro' centro.id %}"><button class="btn btn-secondary mt-1" style="width: 400px;"><i class="fas fa-times"></i> <b>ELIMINAR</b></button></a>
+        </div>
+        {% endif %}
+        <br><br>
+        {% endfor %}
+    <br>   
+    </div>
+    <br>
+</center>
+{% endblock %}

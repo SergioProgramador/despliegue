@@ -1,0 +1,26 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %}
+<br><br>
+<div class="container">
+    <center>
+        <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>RELLENA ESTE FORMULARIO</b></p>
+        <div class="dropdown-divider"></div>
+        <br>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div style="color: #ffffff;">
+                <p><b>CUOTA:</b> <br>Se realizará un pago de 30€ cada mes.</p>
+                <b>{{form.as_p}}</b>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary"><b>CONFIRMAR INSCRIPCIÓN</b></button>
+        </form>
+        <br>
+        <a href="{% url 'inscripcion_home' %}">
+            <button class="btn btn-light"><b>VOLVER</b></button>
+        </a>
+    </center>
+</div>
+<br><br>
+{% endblock %}

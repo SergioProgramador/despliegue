@@ -1,0 +1,40 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %} 
+<br><br>
+<div style="text-align: center;">
+    <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>EJERCICIOS DE {{rutina.titulo}}</b></p>
+    <p style="color: #ffffff; font-size: 0.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{rutina.descripcion}}</p>
+</div>
+<div class="container">
+    <div class="dropdown-divider"></div>
+    <br>
+    <a href="javascript:window.print();">
+        <button class="btn btn-warning mb-3"><b>Imprimir esta página</b></button>
+    </a>
+    <br>
+    <div style="text-align: center;">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="color: #ffffff">
+                    <th scope="col">IMAGEN</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">DESCRIPCIÓN</th>
+                </tr>
+            </thead>
+            <tbody style="color: #ffffff">
+                {% for ejercicio in rutina.ejercicios.all %}
+                    <tr>
+                        <td style="width: 5cm; height: 5cm">
+                            <img src="{{ejercicio.imagen.url}}" width="300px" height="200px">
+                        </td>
+                        <td>{{ejercicio.nombre}}</td>
+                        <td>{{ejercicio.descripcion}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

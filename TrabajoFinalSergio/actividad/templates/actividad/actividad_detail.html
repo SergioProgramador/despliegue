@@ -1,0 +1,43 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %}
+<div class="container"> 
+    <h1 class="mt-4 mb-4" style="text-align: center; color:white"><u>{{actividad.nombre}}</u></h1>
+    <div class="media mb-5">
+        <img src="{{actividad.imagen.url}}" class="align-self-end mr-3" style="box-shadow: 10px 10px 50px grey" height="350cm" width="550cm">
+        <div class="media-body" style="color: #ffffff">
+            <p>{{actividad.descripcion}}</p>
+            <p><b><u>Duración:</u></b><br>
+            {{actividad.duracion}} horas</p>
+            <p><b><u>Tipo Ejercicio:</u></b><br>
+            {{actividad.tipo_ejercicio}}</p>
+            <p><b><u>Calorías:</u></b><br>
+            {{actividad.caloria}} kcal</p>
+            <p><b><u>Beneficio:</u></b><br>
+            {{actividad.beneficio}} </p>
+            {% if request.user.is_staff %}
+                <a href="{% url 'updateActividad' actividad.id %}"><button class="btn btn-warning" style="width: 50px;"><i class="fas fa-pencil-alt"></i> <b></b></button></a>
+                <a href="{% url 'deleteActividad' actividad.id %}"><button class="btn btn-danger" style="width: 50px;"><i class="fas fa-times"></i> <b></b></button></a>
+            {% endif %}
+        </div>
+    </div>    
+</div>
+<div style="background-color: #ffffff;">
+    <div class="container">
+        <br>
+        <p style="font-size: 1.5cm;  text-align: center; color: #804c9e; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><u>INSTRUCTOR</u><p>
+        <div class="media">
+            <div class="media-body">
+                <h4 class="mt-4 mb-1"><b><u>NOMBRE:</u></b> {{actividad.instructor.nombre}}</h4>
+                <h4 class="mt-4 mb-1"><b><u>APELLIDOS:</u></b> {{actividad.instructor.apellidos}}</h4>
+                <h4 class="mt-4 mb-1"><b><u>SEXO:</u></b> {{actividad.instructor.sexo}}</h4>                
+                <h4 class="mt-4 mb-1"><b><u>EDAD:</u></b> {{actividad.instructor.edad}} años</h4>
+                <h4 class="mt-4 mb-1"><b><u>ESPECIALIDAD:</u></b> {{actividad.instructor.especialidad}}</h4>
+            </div>
+            <img src="{{actividad.instructor.imagen.url}}" class="ml-3" style="border-style:solid;border-width:2px;border-color: rgb(58, 52, 68);box-shadow: 20px 20px 50px grey" height="400cm" width="300 cm">
+        </div>
+        <br><br>
+    </div>
+</div>
+<br><br>
+{% endblock %}

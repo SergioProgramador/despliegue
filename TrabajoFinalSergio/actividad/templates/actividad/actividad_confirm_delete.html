@@ -1,0 +1,21 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %}
+<div class="container">
+    <br><br>
+    <div class="row mt-5" style="text-align :center">
+        <div class="col-md-9 mx-auto">
+            <form method="post">
+                {% csrf_token %}
+                <h3 style="color: white">¿Estás seguro de que quieres eliminar esta actividad?</h3>
+                <br>
+                <button type="submit" class="btn btn-danger btn-lg" style="width: 300px"><b>SÍ, ELIMINAR ACTIVIDAD</b></button>
+            </form>
+            <br>
+            <a href="{% url 'actividad_list' %}">
+                <button class="btn btn-light btn-lg" style="width: 300px;"><b>VOLVER</b></button>
+            </a>
+            </div>
+    </div>
+</div>
+{% endblock %}

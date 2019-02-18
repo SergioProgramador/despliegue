@@ -1,0 +1,25 @@
+{% extends 'centro/principal.html' %}
+
+{% block content %}
+<br><br>
+<div class="container">
+    <center>
+        <p style="color: #ffffff; font-size: 1.5cm; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>CREAR RUTINA RECOMENDADA</b></p>
+        <div class="dropdown-divider"></div>
+        <br>
+        <form method="post" action="" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <div style="color: #ffffff;">
+                <b>{{form.as_p}}</b>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary"><b>CREAR RUTINA</b></button>
+        </form>
+        <br>
+        <a href="{% url 'rutina_list' %}">
+            <button class="btn btn-light"><b>VOLVER</b></button>
+        </a>
+    </center>
+</div>
+<br><br>
+{% endblock %}
